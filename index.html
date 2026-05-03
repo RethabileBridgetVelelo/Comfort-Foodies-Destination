@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CraveMate — Bloemfontein</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── NOISE OVERLAY ── -->
+  <div class="noise"></div>
+
+  <!-- ── HEADER ── -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🍜</span>
+        <div>
+          <div class="logo-title">CraveMate</div>
+          <div class="logo-sub">Bloemfontein • Est. 2026</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn active" onclick="showSection('cravings')">Cravings</button>
+        <button class="nav-btn" onclick="showSection('activities')">Bloem Life</button>
+        <button class="nav-btn" onclick="showSection('about')">About</button>
+      </nav>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <button onclick="showSection('cravings'); toggleMenu()">🍔 Cravings</button>
+      <button onclick="showSection('activities'); toggleMenu()">🌆 Bloem Life</button>
+      <button onclick="showSection('about'); toggleMenu()">ℹ️ About</button>
+    </div>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="heroSection">
+    <div class="hero-badge">🌍 Student-Powered</div>
+    <h1 class="hero-title">Feed Your<br><em>Cravings,</em><br>Motswalle.</h1>
+    <p class="hero-sub">Cheap eats, local flavours & things to do — all of Bloemfontein in one spot.</p>
+    <div class="hero-stats">
+      <div class="stat"><span id="statFood">12</span><small>food spots</small></div>
+      <div class="stat-divider">·</div>
+      <div class="stat"><span>R20</span><small>starts from</small></div>
+      <div class="stat-divider">·</div>
+      <div class="stat"><span id="statActivities">8</span><small>activities</small></div>
+    </div>
+    <button class="hero-cta" onclick="showSection('cravings')">Explore Now ↓</button>
+  </section>
+
+  <!-- ── CRAVINGS SECTION ── -->
+  <section class="section" id="cravings">
+    <div class="section-header">
+      <h2 class="section-title">Student <em>Cravings</em></h2>
+      <p class="section-sub">Real spots. Real prices. Real good.</p>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search shawarma, burger, pizza...">
+      </div>
+      <div class="filter-chips">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="street food">Street Food</button>
+        <button class="chip" data-cat="burgers">Burgers</button>
+        <button class="chip" data-cat="pizza">Pizza</button>
+        <button class="chip" data-cat="curry">Curry</button>
+        <button class="chip" data-cat="snacks">Snacks</button>
+      </div>
+      <div class="price-toggle">
+        <label class="toggle-label">
+          <input type="checkbox" id="budgetToggle" onchange="filterFoods()">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          Under R50
+        </label>
+      </div>
+    </div>
+
+    <!-- Food Grid -->
+    <div class="food-grid" id="foodGrid">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Finding your next craving...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ACTIVITIES SECTION ── -->
+  <section class="section hidden" id="activities">
+    <div class="section-header">
+      <h2 class="section-title">Bloem <em>Life</em></h2>
+      <p class="section-sub">Things to do in 2026 — beyond just eating (though eating counts too).</p>
+    </div>
+    <div class="activity-grid" id="activityGrid">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading Bloem activities...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT SECTION ── -->
+  <section class="section hidden" id="about">
+    <div class="about-card">
+      <div class="about-badge">🍜 Built in Bloem, 2026</div>
+      <h2 class="about-title">What is <em>CraveMate?</em></h2>
+      <p class="about-text">CraveMate was built for students and workers in Bloemfontein who are tired of not knowing what to eat, where to find it, or whether it fits their budget. No fancy restaurant guides — just real, affordable, student-approved spots.</p>
+      <div class="about-features">
+        <div class="feature-item">
+          <span class="feature-icon">🍔</span>
+          <div>
+            <strong>Local Food Spots</strong>
+            <p>From R20 kotas to loaded burgers — all near you.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📍</span>
+          <div>
+            <strong>Bloemfontein Focused</strong>
+            <p>UFS area, Westdene, CBD, Mangaung — we know the spots.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">💰</span>
+          <div>
+            <strong>Student Budget</strong>
+            <p>Filter for meals under R50 — no guilt, just satisfaction.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🌆</span>
+          <div>
+            <strong>Bloem Life</strong>
+            <p>Activities, hangouts, and things to do around the city.</p>
+          </div>
+        </div>
+      </div>
+      <div class="stack-badges">
+        <span class="badge">React + TypeScript</span>
+        <span class="badge">Node.js + Express</span>
+        <span class="badge">SQLite</span>
+        <span class="badge">Open Source</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOD MODAL ── -->
+  <div class="modal-overlay hidden" id="modalOverlay" onclick="closeModal()">
+    <div class="modal" id="foodModal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">CraveMate 🍜</div>
+      <p class="footer-text">Made for Bloemfontein students & workers · 2026</p>
+      <p class="footer-sub">Built with 💛 — Open source on GitHub</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
